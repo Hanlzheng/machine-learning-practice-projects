@@ -1,1 +1,3 @@
 *.csv
+*.ipynv_checkpoints
+__pychche__/
