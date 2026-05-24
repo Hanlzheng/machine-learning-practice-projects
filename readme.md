@@ -1,6 +1,6 @@
 # Machine Learning Projects
 
-A collection of machine learning and data analysis projects covering regression modeling and exploratory data analysis. Each project follows a complete workflow: data cleaning, feature engineering, exploratory analysis, modeling, and evaluation.
+A collection of machine learning and data analysis projects covering regression modeling, exploratory data analysis, and competitive machine learning. Each project follows a complete workflow: data cleaning, feature engineering, exploratory analysis, modeling, and evaluation.
 
 ## Projects
 
@@ -52,11 +52,31 @@ Exploratory analysis of the 2019 New York City Airbnb listings dataset (~49,000 
 - **Tech:** Python, pandas, NumPy, matplotlib, seaborn, wordcloud
 - View notebook: [nyc-airbnb-eda/](./nyc-airbnb-eda/)
 
+### 4. Kaggle Competitions
+
+Solutions to competitions from the Kaggle Playground Series, applying a full competitive machine learning workflow.
+
+- **Goal:** Build accurate, well-validated models for monthly Kaggle Playground competitions.
+- **Workflow:**
+  - Performed EDA to understand data structure, target balance, and feature/target relationships
+  - Engineered and validated features against cross-validation, keeping only those that improved the score
+  - Used k-fold `StratifiedKFold` cross-validation with leakage-free target encoding computed inside each fold
+  - Tuned hyperparameters with Optuna and ensembled multiple gradient-boosting models
+  - Made all modeling decisions based on cross-validation scores rather than the public leaderboard
+- **Featured competition -- Predicting F1 Pit Stops (Playground Series S6E5):**
+  predict whether a Formula 1 car pits on the next lap (binary classification, ROC-AUC).
+  Found that each race's lap sequence is heavily down-sampled, so rows are treated
+  as independent snapshots; final solution blends Optuna-tuned LightGBM and XGBoost
+  models. Best public score ~0.9496.
+- **Models:** LightGBM, XGBoost, CatBoost
+- **Tech:** Python, pandas, NumPy, scikit-learn, LightGBM, XGBoost, CatBoost, Optuna, matplotlib, seaborn
+- View competitions: [kaggle/](./kaggle/)
+
 ## Tech Stack
 
 - **Language:** Python
 - **Environment:** Jupyter Notebook
-- **Libraries:** pandas, NumPy, scikit-learn, XGBoost, matplotlib, seaborn, wordcloud
+- **Libraries:** pandas, NumPy, scikit-learn, XGBoost, LightGBM, CatBoost, Optuna, matplotlib, seaborn, wordcloud
 
 ## Datasets
 
@@ -64,6 +84,7 @@ The datasets are not included in this repository (CSV files are gitignored). The
 
 - **TMDB 5000 Movies Dataset** -- available on Kaggle
 - **NYC Airbnb Open Data (2019)** -- available on Kaggle
+- **Kaggle Playground Series** -- competition data available on each competition page
 
 Place the CSV files in the corresponding project folder before running the notebooks.
 
@@ -75,7 +96,7 @@ Place the CSV files in the corresponding project folder before running the noteb
    ```
 2. Install the required libraries:
    ```bash
-   pip install pandas numpy scikit-learn xgboost matplotlib seaborn wordcloud jupyter
+   pip install pandas numpy scikit-learn xgboost lightgbm catboost optuna matplotlib seaborn wordcloud jupyter
    ```
 3. Download the datasets (see above) and place them in the matching project folders.
 4. Launch Jupyter and open any notebook:
